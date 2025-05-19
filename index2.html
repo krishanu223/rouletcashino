@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Roulette Chip Placement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: white;
+            text-align: center;
+        }
+        
+        .chip-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px;
+        }
+        
+        .chip {
+            background: none;
+            border: 2px solid white;
+            border-radius: 8px;
+            padding: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .chip.selected {
+            border-color: yellow;
+        }
+        
+        .chip img {
+            width: 40px;
+            height: 40px;
+        }
+        
+        #chip-values {
+            margin: 10px 0;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        td {
+            width: 50px;
+            height: 50px;
+            border: 1px solid white;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .green {
+            background-color: green;
+        }
+        
+        .red {
+            background-color: red;
+        }
+        
+        .black {
+            background-color: black;
+        }
+        
+        .placed-chip {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Roulette Chip Placement</h1>
+
+    <!-- Chip Buttons -->
+    <div class="chip-buttons">
+        <button class="chip"><span>$1</span><img src="./media/image/chip.png" data-value="1" data-chip="./media/image/chip.png"></button>
+        <button class="chip"><span>$5</span><img src="./media/image/chip.png" data-value="5" data-chip="./media/image/chip.png"></button>
+        <button class="chip"><span>$10</span><img src="./media/image/chip.png" data-value="10" data-chip="./media/image/chip.png"></button>
+        <button class="chip"><span>$25</span><img src="./media/image/chip.png" data-value="25" data-chip="./media/image/chip.png"></button>
+        <button class="chip"><span>$50</span><img src="./media/image/chip.png" data-value="50" data-chip="./media/image/chip.png"></button>
+    </div>
+
+    <!-- Chip Value Totals -->
+    <div id="chip-values">
+        <div>$1: <span id="value-1">0</span></div>
+        <div>$5: <span id="value-5">0</span></div>
+        <div>$10: <span id="value-10">0</span></div>
+        <div>$25: <span id="value-25">0</span></div>
+        <div>$50: <span id="value-50">0</span></div>
+    </div>
+
+    <!-- Roulette Table -->
+    <table>
+        <tr>
+            <td class="green" rowspan="2">0</td>
+            <td class="red">3</td>
+            <td class="black">6</td>
+            <td class="red">9</td>
+            <td class="red">12</td>
+            <td class="black">15</td>
+            <td class="red">18</td>
+        </tr>
+        <tr>
+            <td class="black">2</td>
+            <td class="red">5</td>
+            <td class="black">8</td>
+            <td class="black">11</td>
+            <td class="red">14</td>
+            <td class="black">17</td>
+        </tr>
+        <tr>
+            <td class="green">00</td>
+            <td class="red">1</td>
+            <td class="black">4</td>
+            <td class="red">7</td>
+            <td class="black">10</td>
+            <td class="black">13</td>
+            <td class="red">16</td>
+        </tr>
+    </table>
+
+    <script>
+        let selectedChip = null;
+        let selectedValue = 0;
+        let selectedImage = '';
+
+        const chipButtons = document.querySelectorAll('.chip');
+        const totals = {
+            1: 0,
+            5: 0,
+            10: 0,
+            25: 0,
+            50: 0
+        };
+
+        // Select chip logic
+        chipButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                chipButtons.forEach(btn => btn.classList.remove('selected'));
+                button.classList.add('selected');
+
+                const img = button.querySelector('img');
+                selectedChip = img;
+                selectedValue = parseInt(img.dataset.value);
+                selectedImage = img.dataset.chip;
+            });
+        });
+
+        // Place chip on house
+        const cells = document.querySelectorAll('td');
+        cells.forEach(cell => {
+            cell.addEventListener('click', () => {
+                if (!selectedChip || !selectedValue || !selectedImage) return;
+
+                const chipImg = document.createElement('img');
+                chipImg.src = selectedImage;
+                chipImg.className = 'placed-chip';
+                cell.appendChild(chipImg);
+
+                // Increment chip value
+                totals[selectedValue] += selectedValue;
+                document.getElementById(`value-${selectedValue}`).innerText = totals[selectedValue];
+            });
+        });
+    </script>
+
+</body>
+
+</html>

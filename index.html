@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="mainwind">
+        <div class="header">
+            <div id="headerEle" class="account"></div>
+            <div id="headerEle" class="help"></div>
+            <div id="headerEle" class="childhead1" style=" width: 20%;
+            height: 49%;
+            top: 20%;">
+
+                <div class="betamount">BET</div>
+
+            </div>
+            <div id="headerEle" class="childhead2" style="width: 20%;
+    height: 49%;
+    top: 20%;   width: 20%;
+    height: 49%;
+    left: 40%;
+    top: 20%;
+    position: absolute;
+    background-color: black;
+    border-radius: 10px;">
+                <div class="betamount2"></div>
+
+
+            </div>
+            <div id="headerEle" class="childhead3" style="width: 20%;
+    height: 49%;
+    top: 20%;      width: 20%;
+    height: 49%;
+    left: 65%;
+    top: 20%;
+    position: absolute;
+    background-color: black;
+    border-radius: 10px;      ">
+                <div class="betcoincolr"></div>
+
+            </div>
+            <div id="headerEle" class="pigi"></div>
+            <div id="headerEle" class="threedot"></div>
+        </div>
+
+        <table>
+            <tr>
+                <td class="green" rowspan="2">0</td>
+                <td class="red">3</td>
+                <td class="black">6</td>
+                <td class="red">9</td>
+                <td class="red">12</td>
+                <td class="black">15</td>
+                <td class="red">18</td>
+                <td class="black">21</td>
+                <td class="red">24</td>
+                <td class="red">27</td>
+                <td class="black">30</td>
+                <td class="red">33</td>
+                <td class="black">36</td>
+                <td class="two_one_select">2 To 1</td>
+            </tr>
+            <tr>
+                <td class="black">2</td>
+                <td class="red">5</td>
+                <td class="black">8</td>
+                <td class="black">11</td>
+                <td class="red">14</td>
+                <td class="black">17</td>
+                <td class="red">20</td>
+                <td class="black">23</td>
+                <td class="black">26</td>
+                <td class="red">29</td>
+                <td class="black">32</td>
+                <td class="red">35</td>
+
+                <td class="two_one_select">2 To 1</td>
+            </tr>
+            <tr>
+                <td class="green">00</td>
+                <td class="red">1</td>
+                <td class="black">4</td>
+                <td class="red">7</td>
+                <td class="black">10</td>
+                <td class="black">13</td>
+                <td class="red">16</td>
+                <td class="black">19</td>
+                <td class="red">22</td>
+                <td class="black">25</td>
+                <td class="red">28</td>
+                <td class="black">31</td>
+                <td class="red">34</td>
+                <td class="two_one_select">2 To 1</td>
+            </tr>
+            <tr>
+                <td class="multisele" style=" border:none"></td>
+                <td class="multisele" colspan="4">1ST TWELVE</td>
+                <td class="multisele" colspan="4">2ND TWELVE</td>
+                <td class="multisele" colspan="4">3RD TWELVE</td>
+            </tr>
+            <tr>
+                <td class="multisele" style=" border:none"></td>
+                <td class="multisele" colspan="2">1-18</td>
+                <td class="multisele" colspan="2">EVEN</td>
+                <td class="multisele" colspan="2"></td>
+                <td class="multisele" colspan="2"></td>
+                <td class="multisele" colspan="2">ODD</td>
+                <td class="multisele" colspan="2">19-36</td>
+
+            </tr>
+        </table>
+
+        <div id="chip-selection">
+            <button class="chip">1<img src="./media/image/chip.png" data-value="1" data-chip="./media/image/chip.png"></button>
+            <button class="chip">5<img src="./media/image/chip3.png"  data-value="5" data-chip="./media/image/chip3.png"></button>
+            <button class="chip">10<img src="./media/image/chip4.png"  data-value="10" data-chip="./media/image/chip4.png"></button>
+            <button class="chip">25< <img src="./media/image/chip6.png"  data-value="25" data-chip="./media/image/chip6.png"></button>
+            <button class="chip">50<img src="./media/image/chip7.png"  data-value="50" data-chip="./media/image/chip7.png">
+            </button>
+        </div>
+
+        <div id="controls">
+            <button id="twox" class="contbut">X2</button>
+            <button id="clear" class="contbut">CLEAR</button>
+            <button id="undo" class="contbut">UNDO</button>
+            <button id="rebet" class="contbut">REBET</button>
+            <button id="spin" class="contbut">SPIN</button>
+        </div>
+
+
+        <div class="state">
+            <span>State</span>
+        </div>
+        <div class="outer">
+            <div class="outerstruct">
+                <img src="./media/image/complete.png" width="350px" height="350px">
+            </div>
+            <div class="inner">
+                <img id="innerimg" src="./media/image/innerrou.png">
+            </div>
+        </div>
+        <div class="circle-container" id="circle">
+            <div class="rotating-ball" id="ball"></div>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>
