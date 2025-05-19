@@ -1,6 +1,8 @@
 const inner = document.getElementById("innerimg");
 const outer = document.querySelector(".outer")
 const spiner = document.getElementById("spin");
+const circl = document.querySelector(".circle-container")
+const cells = document.querySelectorAll('td');
 
 function spin() {
 
@@ -15,7 +17,7 @@ let speed = 0.05;
 let running = true;
 let angle = 0;
 ball.style.display = 'none';
-
+circl.style.display = 'none';
 
 function rotateBall() {
     const centerX = container.offsetWidth / 2;
@@ -35,7 +37,7 @@ function rotateBall() {
 // Start animati
 let i = 0;
 spiner.addEventListener("click", () => {
-
+    circl.style.display = 'block';
     outer.style.left = "0%";
     let inter = setInterval(() => {
         i = i + 1;
@@ -46,25 +48,23 @@ spiner.addEventListener("click", () => {
         }
         if (i > 6) {
             running = false;
-
         }
         if (i > 10) {
             ball.style.display = 'none';
+            circl.style.display = 'none';
             outer.style.left = "103%";
             running = true;
             cells.forEach(cell => {
                 const chips = cell.querySelectorAll('.placed-chip');
                 chips.forEach(chip => chip.remove());
-
             });
         }
         if (i > 11) {
             i = 0;
-            console.log(speed, angle)
+
             angle = 0;
             speed = 0.05;
 
-            console.log(speed, angle, running)
             inner.style.transform = "rotate(" + 0 + "deg)";
             clearInterval(inter);
         }
@@ -98,21 +98,31 @@ chipButtons.forEach(button => {
 });
 
 // Handle chip placement on table cells
-const cells = document.querySelectorAll('td');
-cells.forEach(cell => {
-    cell.addEventListener('click', () => {
-        if (!selectedChip || !selectedValue || !selectedImage) return;
 
-        const chipImg = document.createElement('img');
-        chipImg.src = selectedImage;
-        chipImg.className = 'placed-chip';
-        cell.appendChild(chipImg);
+setTimeout(() => {
 
-        // Increment chip value
-        // totals[selectedValue] += selectedValue;
-        // document.getElementById(`value-${selectedValue}`).innerText = totals[selectedValue];
+
+    console.log(cells);
+    cells.forEach(cell => {
+        console.log(cells);
+        cell.addEventListener('click', () => {
+
+            console.log(selectedChip, selectedValue, selectedImage);
+            if (!selectedChip || !selectedValue || !selectedImage) return;
+
+            const chipImg = document.createElement('img');
+            chipImg.src = selectedImage;
+            chipImg.className = 'placed-chip';
+            cell.appendChild(chipImg);
+
+            // Increment chip value
+            // totals[selectedValue] += selectedValue;
+            // document.getElementById(`value-${selectedValue}`).innerText = totals[selectedValue];
+        });
     });
-});
+
+}, 5000);
+
 
 document.getElementById('clear').addEventListener('click', () => {
     // Remove chip images
